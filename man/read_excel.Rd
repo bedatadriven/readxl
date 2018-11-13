@@ -8,15 +8,15 @@
 \usage{
 read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
   col_types = NULL, na = "", trim_ws = TRUE, skip = 0,
-  n_max = Inf, guess_max = min(1000, n_max))
+  n_max = Inf, guess_max = min(1000, n_max), .name_repair = "unique")
 
 read_xls(path, sheet = NULL, range = NULL, col_names = TRUE,
   col_types = NULL, na = "", trim_ws = TRUE, skip = 0,
-  n_max = Inf, guess_max = min(1000, n_max))
+  n_max = Inf, guess_max = min(1000, n_max), .name_repair = "unique")
 
 read_xlsx(path, sheet = NULL, range = NULL, col_names = TRUE,
   col_types = NULL, na = "", trim_ws = TRUE, skip = 0,
-  n_max = Inf, guess_max = min(1000, n_max))
+  n_max = Inf, guess_max = min(1000, n_max), .name_repair = "unique")
 }
 \arguments{
 \item{path}{Path to the xls/xlsx file.}
@@ -62,6 +62,12 @@ the returned tibble. Ignored if \code{range} is given.}
 
 \item{guess_max}{Maximum number of data rows to use for guessing column
 types.}
+
+\item{.name_repair}{Treatment of problematic column names. If the tibble
+package version is recent enough, this offers full access to \code{.name_repair}
+as documented in \code{\link[tibble:tibble]{tibble::tibble()}}. Otherwise, this falls back to name
+repair from tibble v1.4.2. Default behaviour ensures column names are not
+empty and are unique.}
 }
 \value{
 A \link[tibble:tibble-package]{tibble}
